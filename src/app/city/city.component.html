@@ -11,11 +11,22 @@
                         [(ngModel)]="city_name"
                         placeholder="Enter city name"
                         (ngModelChange)="hideDisplay()">
+                    <ng-select
+                        name="temperature"
+                        [items]="temperature_units"
+                        bindLabel="name"
+                        bindValue="id"
+                        [(ngModel)]="selected_temperature_unit"
+                    >
+                    </ng-select>
                     <button (click)="fetchWeather()">Submit</button>
                 </div>
+
             </form>   
         </div>
-        <p *ngIf="display_info" class="alert alert-success" style="padding: 10px; margin-top: 10px;">{{weather.description}}</p>
+        <p *ngIf="display_info" class="alert alert-success" style="padding: 10px; margin-top: 10px;">
+            The current weather in {{city_name|uppercase}} is {{weather.description}} with temperature of {{temperature.temp}}{{temp_unit.const}}
+        </p>
     </div>
 </div>
 
