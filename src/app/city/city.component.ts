@@ -61,11 +61,16 @@ export class CityComponent implements OnInit {
       this.error_message = false;
       this.temp_unit = this.temperature_units.filter(b => {return b.id == this.selected_temperature_unit})[0];
       this.weatherService.getWeather(this.city_name, this.temp_unit.name).subscribe((res: any) => {
+        console.log(res, 'res');
         this.weather = res.weather[0];
-        this.temperature = res.main
+        this.temperature = res.main;
+        this.displayInfo(true);
+
+      },
+      error => {
+        alert(this.city_name + ' ' + error.statusText);
       });
 
-      this.displayInfo(true);
     }
   }
 
