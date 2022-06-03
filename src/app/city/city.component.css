@@ -1,0 +1,12 @@
+.well {
+    height: 400px;
+    max-width: 300px;
+    border-style: solid;
+    border-color: gainsboro;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-padding {
+    padding-top: 40px;
+}

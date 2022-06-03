@@ -1,0 +1,20 @@
+<div class="container well">
+    <div class="row">
+        <p *ngIf="error_message" class="alert alert-warning" role="alert">{{message}}</p>
+        <div class="col-md">
+            <form class="form-padding">
+                <div class="form-group" style="display:flex;">
+                    <input type="text"
+                        class="form-control"
+                        name="city"
+                        [(ngModel)]="city_name"
+                        placeholder="Enter city name"
+                        (ngModelChange)="hideDisplay()">
+                    <button (click)="fetchWeather()">Submit</button>
+                </div>
+            </form>   
+        </div>
+        <p *ngIf="display_info" class="alert alert-success" style="padding: 10px;">{{weather.description}}</p>
+    </div>
+</div>
+
