@@ -11,7 +11,6 @@ export class WeatherService {
 
   getWeather(city_name: string, temperature_unit: string)
   {
-    console.log('came to the service');
     return this.http.get(this.weatherUrl + "?q="+city_name+"&units="+temperature_unit+"&appid=96b2d8899b1dc93083dbe4b85ed75de6");
   }
 }
