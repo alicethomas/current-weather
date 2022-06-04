@@ -31,7 +31,7 @@ export class CityComponent implements OnInit {
   error_message: boolean = false;
   message: string;
   selected_temperature_unit: number = 1;
-  temp_unit : units;
+  temp_unit : units = {id: 1, name: 'Metric', const: '°C'};
   temperature_units: units[] = [
     {id: 1, name: 'Metric', const: '°C'},
     {id: 2, name: 'Imperial', const: '°F'}];
@@ -50,7 +50,7 @@ export class CityComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  fetchWeather()
+  fetchWeather(temp_unit: number)
   {
     if (this.city_name == '')
     {
@@ -59,9 +59,8 @@ export class CityComponent implements OnInit {
     }
     else {
       this.error_message = false;
-      this.temp_unit = this.temperature_units.filter(b => {return b.id == this.selected_temperature_unit})[0];
+      this.temp_unit = this.temperature_units.filter(b => {return b.id == temp_unit})[0];
       this.weatherService.getWeather(this.city_name, this.temp_unit.name).subscribe((res: any) => {
-        console.log(res, 'res');
         this.weather = res.weather[0];
         this.temperature = res.main;
         this.displayInfo(true);
@@ -74,6 +73,18 @@ export class CityComponent implements OnInit {
     }
   }
 
+  showMetricTemperature()
+  {
+    this.selected_temperature_unit = 1;
+    this.fetchWeather(this.selected_temperature_unit);
+  }
+
+  showImperialTemperature()
+  {
+    this.selected_temperature_unit = 2;
+    this.fetchWeather(this.selected_temperature_unit);
+  }
+
   hideDisplay()
   {
     this.displayInfo(false)
@@ -83,6 +94,4 @@ export class CityComponent implements OnInit {
   {
     this.display_info = val;
   }
-
-
 }

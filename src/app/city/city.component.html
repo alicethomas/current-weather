@@ -1,7 +1,9 @@
 
 <div class="container well">
+
+    <p *ngIf="error_message" class="alert alert-warning" role="alert">{{message}}</p>
+
     <div class="row">
-        <p *ngIf="error_message" class="alert alert-warning" role="alert">{{message}}</p>
         <div class="col-md">
             <form class="form-padding">
                 <div class="form-group" style="display:flex;">
@@ -11,21 +13,15 @@
                         [(ngModel)]="city_name"
                         placeholder="Enter city name"
                         (ngModelChange)="hideDisplay()">
-                    <ng-select
-                        name="temperature"
-                        [items]="temperature_units"
-                        bindLabel="name"
-                        bindValue="id"
-                        [(ngModel)]="selected_temperature_unit"
-                    >
-                    </ng-select>
-                    <button (click)="fetchWeather()">Submit</button>
+                    <button (click)="fetchWeather(this.selected_temperature_unit)">Submit</button>
                 </div>
-
+                <div class="button-group">
+                    <button class="unit-button" (click)="showMetricTemperature()">Metric</button><button class="unit-button" (click)="showImperialTemperature()">Imperial</button>
+                </div>
             </form>   
         </div>
         <p *ngIf="display_info" class="alert alert-success" style="padding: 10px; margin-top: 10px;">
-            The current weather in {{city_name|uppercase}} is {{weather.description}} with temperature of {{temperature.temp}}{{temp_unit.const}}
+            The current weather in {{city_name|uppercase}} is <strong>{{weather.description}}</strong> with temperature of <strong>{{temperature.temp}}{{temp_unit.const}}</strong> 
         </p>
     </div>
 </div>
