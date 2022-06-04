@@ -7,6 +7,15 @@
     margin-bottom: 10px;
 }
 
+.container .row {
+    position: relative;
+    top: 100px;
+}
+
+.alert-warning {
+    position: absolute;
+}
+
 .form-padding {
     padding-top: 40px;
 }
@@ -14,4 +23,16 @@
 .images {
     width: 100%;
     height: 200px;
+}
+
+.button-group {
+    display:flex;
+    margin: 5px;
+    position: relative;
+    left: 100px;
+    line-height: 10px;
+}
+
+.unit-button {
+    border-radius: 5px;
 }
