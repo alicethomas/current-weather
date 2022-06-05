@@ -1,6 +1,7 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 
 import { WeatherService } from './weather.service';
+import { HttpClient } from '@angular/common/http';
 
 describe('WeatherService', () => {
   let service: WeatherService;
@@ -10,7 +11,7 @@ describe('WeatherService', () => {
     service = TestBed.inject(WeatherService);
   });
 
-  it('should be created', () => {
+  it('should be created', inject([WeatherService], (service: WeatherService) => {
     expect(service).toBeTruthy();
-  });
+  }));
 });
