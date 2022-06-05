@@ -16,11 +16,11 @@
                     <button id="fetch_weather" (click)="fetchWeather(this.selected_temperature_unit)">Submit</button>
                 </div>
                 <div class="button-group">
-                    <button class="unit-button" (click)="showMetricTemperature()">Metric</button><button class="unit-button" (click)="showImperialTemperature()">Imperial</button>
+                    <button id="metric" class="unit-button" (click)="showMetricTemperature()">Metric</button><button id= "imperial" class="unit-button" (click)="showImperialTemperature()">Imperial</button>
                 </div>
             </form>   
         </div>
-        <p *ngIf="display_info" class="alert alert-success" style="padding: 10px; margin-top: 10px;">
+        <p *ngIf="display_info" id="info" class="alert alert-success" style="padding: 10px; margin-top: 10px;">
             The current weather in {{city_name|uppercase}} is <strong>{{weather.description}}</strong> with temperature of <strong>{{temperature.temp}}{{temp_unit.const}}</strong> 
         </p>
     </div>
