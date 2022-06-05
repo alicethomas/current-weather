@@ -13,7 +13,7 @@
                         [(ngModel)]="city_name"
                         placeholder="Enter city name"
                         (ngModelChange)="hideDisplay()">
-                    <button (click)="fetchWeather(this.selected_temperature_unit)">Submit</button>
+                    <button id="fetch_weather" (click)="fetchWeather(this.selected_temperature_unit)">Submit</button>
                 </div>
                 <div class="button-group">
                     <button class="unit-button" (click)="showMetricTemperature()">Metric</button><button class="unit-button" (click)="showImperialTemperature()">Imperial</button>

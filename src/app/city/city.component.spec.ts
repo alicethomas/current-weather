@@ -24,4 +24,9 @@ describe('CityComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  fit('should contain Submit button', () => {
+    const btn = fixture.debugElement.nativeElement.querySelector('#fetch_weather');
+    expect(btn.innerHTML).toBe('Submit');
+  });
 });
