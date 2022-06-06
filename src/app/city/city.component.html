@@ -1,7 +1,7 @@
 
 <div class="container well">
 
-    <p *ngIf="error_message" class="alert alert-warning" role="alert">{{message}}</p>
+    <p *ngIf="set_error_message" class="alert alert-warning" role="alert">{{error_message}}</p>
 
     <div class="row">
         <div class="col-md">
@@ -13,16 +13,31 @@
                         [(ngModel)]="city_name"
                         placeholder="Enter a city name"
                         (ngModelChange)="controlDisplay()">
-                    <button id="fetch_weather" (click)="fetchWeather(this.selected_temperature_unit)">Submit</button>
+                    <button id="fetch_weather_button" class="btn btn-outline-dark" (click)="fetchCityList(this.selected_temperature_unit)">Submit</button>
                 </div>
+                <div *ngIf="cities_list && cities_list.length">
+                    <ul style="list-style: none;">
+                        <li *ngFor="let city of cities_list">
+                            <button [class.selected]="city === selectedCity" type="button" (click)="onSelect(city)" class="btn btn-outline-secondary btn-block" style="width: 400px;"> 
+                                {{city.city}} {{city.country}} &nbsp;&nbsp;&nbsp;&nbsp;<small>lat:{{city.latitude}} lon:{{city.longitude}}</small>
+                            </button>
+                        </li>
+
+                    </ul>
+                </div>
+                
                 <div class="button-group">
-                    <button id="metric" class="unit-button" (click)="showMetricTemperature()">Metric</button><button id= "imperial" class="unit-button" (click)="showImperialTemperature()">Imperial</button>
+                    <button id="metric" class="btn btn-outline-secondary" (click)="showMetricTemperature()">Metric</button>
+                    <button id="imperial" class="btn btn-outline-secondary" (click)="showImperialTemperature()">Imperial</button>
                 </div>
-            </form>   
+            </form>
         </div>
-        <p *ngIf="display_info" id="info" class="alert alert-success" style="padding: 10px; margin-top: 10px;">
-            The current weather in {{city_name|uppercase}} is <strong>{{weather.description}}</strong> with temperature of <strong>{{temperature.temp}}{{temp_unit.const}}</strong> 
-        </p>
+        <div *ngIf="display_info" id="info" class="alert alert-success" style="padding: 10px; margin-top: 10px;">
+            <h2>{{selectedCity.city}}, {{selectedCity.country}}</h2>
+            The current weather is <strong>{{weather.description}}</strong>
+            <br> Temperature: <strong>{{temperature.temp}}{{temp_unit.const}}</strong> 
+            <br> Feels like:  <strong>{{temperature.feels_like}}{{temp_unit.const}}</strong>
+        </div>
     </div>
 </div>
 
