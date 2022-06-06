@@ -11,8 +11,8 @@
                         class="form-control"
                         name="city"
                         [(ngModel)]="city_name"
-                        placeholder="Enter city name"
-                        (ngModelChange)="hideDisplay()">
+                        placeholder="Enter a city name"
+                        (ngModelChange)="controlDisplay()">
                     <button id="fetch_weather" (click)="fetchWeather(this.selected_temperature_unit)">Submit</button>
                 </div>
                 <div class="button-group">

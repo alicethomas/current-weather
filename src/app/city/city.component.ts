@@ -85,7 +85,7 @@ export class CityComponent implements OnInit {
     this.fetchWeather(this.selected_temperature_unit);
   }
 
-  hideDisplay()
+  controlDisplay()
   {
     this.displayInfo(false)
   }
