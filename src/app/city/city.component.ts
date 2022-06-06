@@ -38,7 +38,6 @@ export class CityComponent implements OnInit {
   selectedCity = <CityDetails>{};
   cities_list: CityDetails[] = [];
 
-
   display_info: boolean = false;
   set_error_message: boolean = false;
   error_message: string;
@@ -75,8 +74,7 @@ export class CityComponent implements OnInit {
     this.cities_list = [];
     if (this.city_name == '')
     {
-      this.set_error_message = true;
-      this.error_message = 'Please enter a city name and try again';
+      this.showErrorMessage();
     }
     else {
       this.set_error_message = false;
@@ -113,14 +111,23 @@ export class CityComponent implements OnInit {
 
   showMetricTemperature()
   {
-    this.selected_temperature_unit = 1;
-    this.fetchCityWeather(this.selectedCity);
+    if (this.city_name) {
+      this.selected_temperature_unit = 1;
+      this.fetchCityWeather(this.selectedCity);
+    } else {
+      this.showErrorMessage();
+    }
   }
 
   showImperialTemperature()
   {
-    this.selected_temperature_unit = 2;
-    this.fetchCityWeather(this.selectedCity);
+    if (this.city_name){
+      this.selected_temperature_unit = 2;
+      this.fetchCityWeather(this.selectedCity);
+    }
+    else {
+      this.showErrorMessage();
+    }
   }
 
   controlDisplay()
@@ -131,5 +138,11 @@ export class CityComponent implements OnInit {
   displayInfo(val:boolean)
   {
     this.display_info = val;
+  }
+
+  showErrorMessage()
+  {
+    this.set_error_message = true;
+    this.error_message = 'Please enter a city name and try again';
   }
 }
