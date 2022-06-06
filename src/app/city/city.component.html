@@ -15,7 +15,7 @@
                         (ngModelChange)="controlDisplay()">
                     <button id="fetch_weather_button" class="btn btn-outline-dark" (click)="fetchCityList(this.selected_temperature_unit)">Submit</button>
                 </div>
-                <div *ngIf="cities_list && cities_list.length">
+                <div *ngIf="cities_list && cities_list.length" class="city-list">
                     <ul style="list-style: none;">
                         <li *ngFor="let city of cities_list">
                             <button [class.selected]="city === selectedCity" type="button" (click)="onSelect(city)" class="btn btn-outline-secondary btn-block" style="width: 400px;"> 

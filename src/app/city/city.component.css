@@ -31,6 +31,7 @@
     line-height: 10px;
 }
 
-.unit-button {
-    border-radius: 5px;
+.city-list {
+    position: relative;
+    left: -40px;
 }
