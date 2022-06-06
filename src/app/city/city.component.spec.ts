@@ -26,17 +26,16 @@ describe('CityComponent', () => {
   });
 
   it('should contain Submit button', () => {
-    const btn = fixture.debugElement.nativeElement.querySelector('#fetch_weather');
+    const btn = fixture.debugElement.nativeElement.querySelector('#fetch_weather_button');
     expect(btn.innerHTML).toBe('Submit');
   });
 
   it('should show error message for empty city field', () => {
     component.city_name = '';
     component.selected_temperature_unit = 1;
-    component.fetchWeather(component.selected_temperature_unit);
-    fixture.detectChanges();
-    expect(component.message).toEqual('Please enter a city name and try again');
-
+    let btn = fixture.debugElement.nativeElement.querySelector("#fetch_weather_button");
+    component.fetchCityList(component.selected_temperature_unit);
+    expect(component.error_message).toEqual('Please enter a city name and try again');
   });
 
   
