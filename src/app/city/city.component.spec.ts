@@ -39,4 +39,12 @@ describe('CityComponent', () => {
 
   });
 
+  
+  it('should show temperature in °C when metric clicked', () => {
+    component.city_name = 'helsinki';
+    component.selected_temperature_unit  = 2;
+    component.showMetricTemperature();
+    expect(component.temp_unit.const).toBe('°C');
+  });
+
 });
